@@ -1,6 +1,12 @@
+Task Details
+=====
+https://competitions.codalab.org/competitions/17344
+
+
 Training Data
 =====
-Crawled from twitter, using the crawler in the Semeval github.
+Crawled from twitter, using the crawler in the Semeval github:
+
 https://github.com/fvancesco/Semeval2018-Task2-Emoji-Detection/tree/master/dataset
 
 
