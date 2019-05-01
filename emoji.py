@@ -20,18 +20,14 @@ class feature_extraction:
 	def __init__(self, texts):
 		self.bivect = CountVectorizer(ngram_range=(1, 2),analyzer='word',binary= True)
 		self.dictvect = DictVectorizer()
-		
-		
-
-		
-		# self.charvect = CountVectorizer(ngram_range=(1, 6), analyzer='char', binary = True)
-		# self.charvect.fit(texts)
+		self.charvect = CountVectorizer(ngram_range=(1, 6), analyzer='char', binary = True)
+		self.charvect.fit(texts)
 		self.bivect.fit(texts)
-		
 		return
+	
 	def __call__(self, texts):
-		# return hstack([self.charvect.transform(texts), self.bivect.transform(texts)])
-		return hstack([self.bivect.transform(texts),self.charvect.transform(texts)])
+		return hstack([self.charvect.transform(texts), self.bivect.transform(texts)])
+		
 
 class labelencoder:
 	def __init__(self, labels):
@@ -61,37 +57,6 @@ class classifier:
 	def predict(self, feature):
 
 		return self.classifier.predict(feature)
-
-# text = readdata('./crawler/data/tweet_by_ID_20_4_2019__10_00_17.txt.text')
-# texts = [items for items in text]
-
-
-# label = readdata('./crawler/data/tweet_by_ID_20_4_2019__10_00_17.txt.labels')
-# labels = [items for items in label]
-
-
-# feature = feature_extraction(texts)
-# label = labelencoder(labels)
-
-# print('Done feature and label')
-
-# classifier = LogisticRegression(penalty='l1',fit_intercept=True,solver='liblinear', multi_class='auto')
-# classifier.train(feature(texts), label(labels))
-
-# print('Done training')
-
-# trial = readdata('../trial/us_trial.text')
-# trialtexts = [items for items in trial]
-
-
-# predicted = classifier.predict(feature(trialtexts))
-# x = label.getname(predicted)
-
-# for item in x:
-# 	predict.write(item+'\n')
-
-# predict.close()
-
 
 
 
