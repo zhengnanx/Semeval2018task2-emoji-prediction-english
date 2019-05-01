@@ -4,29 +4,29 @@ from sklearn import preprocessing
 from sklearn.linear_model import LogisticRegression
 import sys
 from scipy.sparse import hstack
-import emoji2
+import emoji
 
 predict = open('predict_output_42902.txt', 'w')
 
-text = emoji2.readdata('./crawler/data/tweet_by_ID_20_4_2019__10_00_17.txt.text')
+text = emoji.readdata('./crawler/data/tweet_by_ID_20_4_2019__10_00_17.txt.text')
 texts = [items for items in text]
 
 
-label = emoji2.readdata('./crawler/data/tweet_by_ID_20_4_2019__10_00_17.txt.labels')
+label = emoji.readdata('./crawler/data/tweet_by_ID_20_4_2019__10_00_17.txt.labels')
 labels = [items for items in label]
 
 
-feature = emoji2.feature_extraction(texts)
+feature = emoji.feature_extraction(texts)
 label = emoji2.labelencoder(labels)
 
 print('Done feature and label')
 
-classifier = emoji2.classifier()
+classifier = emoji.classifier()
 classifier.train(feature(texts), label(labels))
 
 print('Done training')
 
-trial = emoji2.readdata('../test/us_test.text')
+trial = emoji.readdata('../test/us_test.text')
 trialtexts = [items for items in trial]
 
 
